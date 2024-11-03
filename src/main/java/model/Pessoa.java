@@ -1,13 +1,11 @@
 package model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "tb_pessoa")
-public class Pessoa implements Serializable { 
+public abstract class Pessoa implements Serializable { 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
@@ -20,6 +18,12 @@ public class Pessoa implements Serializable {
         this.nome = nome;
         this.telefone = telefone;
         this.cpf = cpf;
+    }
+
+    public Pessoa() {}
+    
+    public int getId() {
+        return id;
     }
 
     public String getNome() {
