@@ -1,6 +1,17 @@
 package model;
 
-public class Pessoa {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.*;
+
+@Entity
+@Table(name = "tb_pessoa")
+public class Pessoa implements Serializable { 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private int id;
+    
     private String nome;
     private String telefone;
     private String cpf;
