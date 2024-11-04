@@ -8,9 +8,12 @@ import javax.persistence.*;
 @Entity
 @Table(name = "tb_veterinario")
 public class Veterinario extends Pessoa {
+
+    @Column(nullable = false)
     private float salario;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Especializacao especializacao;
 
     @ManyToOne
@@ -22,9 +25,9 @@ public class Veterinario extends Pessoa {
 
     @ManyToMany
     @JoinTable(
-        name = "tb_veterinario_cliente",
-        joinColumns = @JoinColumn(name = "veterinario_id"),
-        inverseJoinColumns = @JoinColumn(name = "cliente_id")
+            name = "tb_veterinario_cliente",
+            joinColumns = @JoinColumn(name = "veterinario_id"),
+            inverseJoinColumns = @JoinColumn(name = "cliente_id")
     )
     private Set<Cliente> clientes;
 
@@ -34,7 +37,8 @@ public class Veterinario extends Pessoa {
         this.especializacao = especializacao;
     }
 
-    public Veterinario() {}
+    public Veterinario() {
+    }
 
     public float getSalario() {
         return salario;

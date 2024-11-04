@@ -6,7 +6,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "tb_cliente")
 public class Cliente extends Pessoa {
+    @Column(nullable = false)
     private String endereco;
+    
+    @Column(nullable = false, length = 100)
     private String email;
 
     @OneToMany(mappedBy = "dono", cascade = CascadeType.ALL, orphanRemoval = true)

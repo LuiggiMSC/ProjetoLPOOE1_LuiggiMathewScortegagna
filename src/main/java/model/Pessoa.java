@@ -5,13 +5,19 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "tb_pessoa")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Pessoa implements Serializable { 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     
+    @Column(nullable = false, length = 100)
     private String nome;
+    
+    @Column(nullable = false, length = 20)
     private String telefone;
+    
+    @Column(nullable = false, length = 14)
     private String cpf;
 
     public Pessoa(String nome, String telefone, String cpf) {

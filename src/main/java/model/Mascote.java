@@ -6,12 +6,16 @@ import javax.persistence.*;
 @Entity
 @Table(name = "tb_mascote")
 public class Mascote {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private int idade;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private TipoMascote tipo;
 
     @ManyToOne
@@ -24,7 +28,8 @@ public class Mascote {
         this.dono = dono;
     }
 
-    public Mascote() {}
+    public Mascote() {
+    }
 
     public Long getId() {
         return id;
