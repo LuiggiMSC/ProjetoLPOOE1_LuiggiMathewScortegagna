@@ -1,14 +1,14 @@
 import com.mycompany.ProjetoLPOOE1.dao.PersistenciaJPA;
-/*
-import model.EntradaSaida;
-import model.Marca;
-import model.Modelo;
-import model.Pessoa;
-import model.TipoMovimentacao;
-import model.TipoVeiculo;
-import model.Veiculo;
-import model.VinculoPessoa;
-*/
+
+import model.Cliente;
+import model.Veterinario;
+import model.Mascote;
+import model.TipoMascote;
+import model.Especializacao;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
@@ -41,38 +41,50 @@ public class TestePersistencia {
     //
     @Test
     public void testePersistencia() {
-        /*
-        Modelo m = new Modelo();
-        m.setDescricao("Teste");
-        m.setMarca(Marca.FORD);
+        // cliente
+        Cliente cliente = new Cliente();
+        cliente.setNome("Cliente 1");
+        cliente.setTelefone("1234567890");
+        cliente.setCpf("123.456.789-00");
+        cliente.setEndereco("Rua Fulana, 123");
+        cliente.setEmail("cliente.um@teste.com");
 
-        Veiculo a = new Veiculo();
-        a.setModelo(m);
-        a.setCor("Vermelho");
-        a.setTipoVeiculo(TipoVeiculo.CARRO);
-        a.setPlaca("ABCDE01");
+        // vet
+        Veterinario veterinario = new Veterinario();
+        veterinario.setNome("Vet 1");
+        veterinario.setTelefone("0987654321");
+        veterinario.setCpf("987.654.321-00");
+        veterinario.setSalario(8000.50f);
+        veterinario.setEspecializacao(Especializacao.CIRURGIA);
 
-        EntradaSaida en_sai = new EntradaSaida(TipoMovimentacao.SAIDA, a);
-        //m.setMarca(Marca.HONDA);
-        Pessoa bianca = new Pessoa();
-        bianca.setNome("Bianca");
-        bianca.setVinculoPessoa(VinculoPessoa.ALUNO);
-        a.setProprietario(bianca);
+        // supervisor autorelac
+        Veterinario supervisor = new Veterinario();
+        supervisor.setNome("Vet 2 (SUPERVISOR)");
+        supervisor.setTelefone("123333333");
+        supervisor.setCpf("111.222.333-44");
+        supervisor.setSalario(9000.00f);
+        supervisor.setEspecializacao(Especializacao.CUIDADOS);
 
-        Modelo m2 = new Modelo();
-        m2.setDescricao("modelo 2");
-        m2.setMarca(Marca.HONDA); */
+        // supervisor do veterinario
+        veterinario.setSupervisor(supervisor);
+
+        // pet
+        Mascote mascote = new Mascote();
+        mascote.setIdade(3);
+        mascote.setTipo(TipoMascote.CACHORRO);
+        mascote.setDono(cliente);
 
         try {
-            /*
-            jpa.persist(m);
-            jpa.persist(m2);
-            jpa.persist(a);
-            jpa.persist(en_sai);
-            jpa.persist(bianca);
-            //jpa.remover(bianca); */
+            // persistindo objetos 1 de cada classe aq
+            jpa.persist(supervisor); 
+            jpa.persist(veterinario); 
+            jpa.persist(cliente); 
+            jpa.persist(mascote);
+
+            System.out.println("Objetos persistidos com sucesso!");
+
         } catch (Exception e) {
-            //System.out.println("Erro ao persistir modelo: " + m);
+            System.out.println("Erro ao persistir objetos: ");
         }
     }
 }
