@@ -1,19 +1,24 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "tb_cliente")
 public class Cliente extends Pessoa {
+
     @Column(nullable = false)
     private String endereco;
-    
+
     @Column(nullable = false, length = 100)
     private String email;
 
     @OneToMany(mappedBy = "dono", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Mascote> mascotes;
+
+    @ManyToMany(mappedBy = "clientes")
+    private List<Veterinario> veterinarios = new ArrayList<>();
 
     public Cliente(String nome, String telefone, String cpf, String endereco, String email) {
         super(nome, telefone, cpf);
@@ -21,7 +26,8 @@ public class Cliente extends Pessoa {
         this.email = email;
     }
 
-    public Cliente() {}
+    public Cliente() {
+    }
 
     public String getEndereco() {
         return endereco;
@@ -45,5 +51,9 @@ public class Cliente extends Pessoa {
 
     public void setMascotes(List<Mascote> mascotes) {
         this.mascotes = mascotes;
+    }
+
+    public List<Veterinario> getVeterinarios() {
+        return veterinarios;
     }
 }

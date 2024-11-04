@@ -5,10 +5,6 @@ import model.Veterinario;
 import model.Mascote;
 import model.TipoMascote;
 import model.Especializacao;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
@@ -73,6 +69,11 @@ public class TestePersistencia {
         mascote.setIdade(3);
         mascote.setTipo(TipoMascote.CACHORRO);
         mascote.setDono(cliente);
+        
+        
+        // teste fazendo atendimento
+        cliente.getVeterinarios().add(veterinario);
+        veterinario.getClientes().add(cliente);
 
         try {
             // persistindo objetos 1 de cada classe aq
