@@ -6,7 +6,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "tb_mascote")
 public class Mascote {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,8 +27,7 @@ public class Mascote {
         this.dono = dono;
     }
 
-    public Mascote() {
-    }
+    public Mascote() {}
 
     public Long getId() {
         return id;

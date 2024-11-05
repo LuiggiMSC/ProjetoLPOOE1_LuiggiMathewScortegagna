@@ -9,7 +9,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "tb_veterinario")
 public class Veterinario extends Pessoa {
-
     @Column(nullable = false)
     private float salario;
 
@@ -25,10 +24,12 @@ public class Veterinario extends Pessoa {
     private List<Veterinario> supervisionados;
 
     @ManyToMany
-    @JoinTable(name = "tb_veterinario_cliente",
-            joinColumns = @JoinColumn(name = "veterinario_id"),
-            inverseJoinColumns = @JoinColumn(name = "cliente_id"))
-    private List<Cliente> clientes = new ArrayList<>();
+    @JoinTable(
+        name = "tb_veterinario_cliente",
+        joinColumns = @JoinColumn(name = "veterinario_id"),
+        inverseJoinColumns = @JoinColumn(name = "cliente_id")
+    )
+    private Set<Cliente> clientes;
 
     public Veterinario(String nome, String telefone, String cpf, float salario, Especializacao especializacao) {
         super(nome, telefone, cpf);
@@ -36,8 +37,7 @@ public class Veterinario extends Pessoa {
         this.especializacao = especializacao;
     }
 
-    public Veterinario() {
-    }
+    public Veterinario() {}
 
     public float getSalario() {
         return salario;
@@ -71,7 +71,11 @@ public class Veterinario extends Pessoa {
         this.supervisionados = supervisionados;
     }
 
-    public List<Cliente> getClientes() {
+    public Set<Cliente> getClientes() {
         return clientes;
+    }
+
+    public void setClientes(Set<Cliente> clientes) {
+        this.clientes = clientes;
     }
 }
