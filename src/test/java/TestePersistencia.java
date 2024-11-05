@@ -1,4 +1,5 @@
 import com.mycompany.ProjetoLPOOE1.dao.PersistenciaJPA;
+import java.util.ArrayList;
 import java.util.List;
 
 import model.Cliente;
@@ -61,11 +62,18 @@ public class TestePersistencia {
         supervisor.setEspecializacao(Especializacao.CUIDADOS);
 
         veterinario.setSupervisor(supervisor);
+        
+        cliente.setMascotes(new ArrayList<>());
 
         Mascote mascote = new Mascote();
         mascote.setIdade(3);
         mascote.setTipo(TipoMascote.CACHORRO);
         mascote.setDono(cliente); 
+        
+        Mascote mascoteDois = new Mascote();
+        mascoteDois.setIdade(1);
+        mascoteDois.setTipo(TipoMascote.GATO);
+        mascoteDois.setDono(cliente);
         
         cliente.setVeterinarios(List.of(veterinario, supervisor));
         veterinario.setClientes(List.of(cliente));
@@ -80,6 +88,7 @@ public class TestePersistencia {
             jpa.persist(cliente);
             jpa.persist(clienteDois);
             jpa.persist(mascote); 
+            jpa.persist(mascoteDois);
 
             System.out.println("Objetos persistidos.");
 
