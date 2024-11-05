@@ -23,13 +23,8 @@ public class Veterinario extends Pessoa {
     @OneToMany(mappedBy = "supervisor")
     private List<Veterinario> supervisionados;
 
-    @ManyToMany
-    @JoinTable(
-        name = "tb_veterinario_cliente",
-        joinColumns = @JoinColumn(name = "veterinario_id"),
-        inverseJoinColumns = @JoinColumn(name = "cliente_id")
-    )
-    private Set<Cliente> clientes;
+    @ManyToMany(mappedBy="veterinarios")
+    private List<Cliente> clientes;
 
     public Veterinario(String nome, String telefone, String cpf, float salario, Especializacao especializacao) {
         super(nome, telefone, cpf);
@@ -71,11 +66,11 @@ public class Veterinario extends Pessoa {
         this.supervisionados = supervisionados;
     }
 
-    public Set<Cliente> getClientes() {
+    public List<Cliente> getClientes() {
         return clientes;
     }
-
-    public void setClientes(Set<Cliente> clientes) {
+    
+    public void setClientes(List<Cliente> clientes) {
         this.clientes = clientes;
     }
 }

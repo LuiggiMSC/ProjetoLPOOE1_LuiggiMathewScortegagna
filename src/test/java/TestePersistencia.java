@@ -1,4 +1,5 @@
 import com.mycompany.ProjetoLPOOE1.dao.PersistenciaJPA;
+import java.util.List;
 
 import model.Cliente;
 import model.Veterinario;
@@ -58,6 +59,10 @@ public class TestePersistencia {
         mascote.setIdade(3);
         mascote.setTipo(TipoMascote.CACHORRO);
         mascote.setDono(cliente); 
+        
+        cliente.setVeterinarios(List.of(veterinario, supervisor));
+        veterinario.setClientes(List.of(cliente));
+        supervisor.setClientes(List.of(cliente));
 
         try {
             jpa.persist(supervisor); 
