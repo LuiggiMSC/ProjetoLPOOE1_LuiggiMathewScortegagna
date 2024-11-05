@@ -38,6 +38,13 @@ public class TestePersistencia {
         cliente.setCpf("123.456.789-00");
         cliente.setEndereco("123");
         cliente.setEmail("clientePrimeiro@gmail.com");
+        
+        Cliente clienteDois = new Cliente();
+        clienteDois.setNome("Cliente 2");
+        clienteDois.setTelefone("0123");
+        clienteDois.setCpf("3210");
+        clienteDois.setEndereco("teste rua");
+        clienteDois.setEmail("clienteSegundo@gmail.com");
 
         Veterinario veterinario = new Veterinario();
         veterinario.setNome("Vet 1");
@@ -63,11 +70,15 @@ public class TestePersistencia {
         cliente.setVeterinarios(List.of(veterinario, supervisor));
         veterinario.setClientes(List.of(cliente));
         supervisor.setClientes(List.of(cliente));
+        
+        clienteDois.setVeterinarios(List.of(supervisor));
+        supervisor.setClientes(List.of(clienteDois));
 
         try {
             jpa.persist(supervisor); 
             jpa.persist(veterinario); 
             jpa.persist(cliente);
+            jpa.persist(clienteDois);
             jpa.persist(mascote); 
 
             System.out.println("Objetos persistidos.");
