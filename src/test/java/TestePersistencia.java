@@ -70,7 +70,7 @@ public class TestePersistencia {
             jpa.persist(cliente);
             jpa.persist(mascote); 
 
-            System.out.println("Objetos persistidos com sucesso!");
+            System.out.println("Objetos persistidos.");
 
         } catch (Exception e) {
             System.out.println("Erro ao persistir objetos: " + e.getMessage());
