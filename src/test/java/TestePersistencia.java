@@ -75,6 +75,11 @@ public class TestePersistencia {
         mascoteDois.setTipo(TipoMascote.GATO);
         mascoteDois.setDono(cliente);
         
+        Mascote mascoteTres = new Mascote();
+        mascoteTres.setIdade(2);
+        mascoteTres.setTipo(TipoMascote.GATO);
+        mascoteTres.setDono(clienteDois);
+        
         cliente.setVeterinarios(List.of(veterinario, supervisor));
         veterinario.setClientes(List.of(cliente));
         supervisor.setClientes(List.of(cliente));
@@ -89,6 +94,7 @@ public class TestePersistencia {
             jpa.persist(clienteDois);
             jpa.persist(mascote); 
             jpa.persist(mascoteDois);
+            jpa.persist(mascoteTres);
 
             System.out.println("Objetos persistidos.");
 
