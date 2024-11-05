@@ -1,1 +1,1 @@
-![LuiggiMSC_Diagrama](https://github.com/user-attachments/assets/e729c777-a553-403e-81ed-431325a671b7)
+![LuiggiMSC_Diagrama](https://github.com/user-attachments/assets/b9faf3b2-1a24-45e7-b451-c3591279b598)
