@@ -63,7 +63,7 @@ public class TestePersistencia {
 
         veterinario.setSupervisor(supervisor);
         
-        cliente.setMascotes(new ArrayList<>());
+        //cliente.setMascotes(new ArrayList<>());
 
         Mascote mascote = new Mascote();
         mascote.setIdade(3);
